@@ -1,0 +1,33 @@
+import java.util.Scanner; 
+class EVANS extends Exception 
+{ 
+// Declare default constructor. 
+EVANS(String output) 
+{ 
+super(output); // Call super exception class constructor. 
+} 
+static int age;// make it static to enable referencing from static context 
+static void validate() throws EVANS// make it static to enable referencing from static context 
+{ 
+Scanner sc = new Scanner(System.in); 
+System.out.println("Enter your age"); 
+age = sc.nextInt(); 
+} 
+public static void main(String[] args) 
+{ 
+try
+{ 
+validate(); 
+EVANS me = new EVANS("You are not eligible to vote in Kenya"); 
+if(age < 18) 
+throw me;
+else 
+System.out.println("You are eligible to vote"); 
+} 
+catch(EVANS geo) 
+{ 
+System.out.println(geo.getMessage()); 
+} 
+} 
+}
+
